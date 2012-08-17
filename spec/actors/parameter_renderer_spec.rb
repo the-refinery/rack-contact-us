@@ -5,7 +5,7 @@ class TestTemplate
   def initialize(&block)
     @template = block.call
   end
-  def render(context)
+  def render(params, context)
     keys = context.keys
     keys.reduce @template do |str,key|
       str.gsub("%#{key}", context[key])
