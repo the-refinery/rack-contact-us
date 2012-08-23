@@ -8,7 +8,7 @@ class ParameterRenderer
     params.reduce({}) do |new_params,(key,value)|
       if value.is_a? Hash
         new_params[key] = call(value, context)
-        new_params.tap { |u| puts "new_params: #{new_params.inspect}" }
+        new_params
       else
         template = @template_class.new { value }
         new_params[key] = template.render(nil, context)

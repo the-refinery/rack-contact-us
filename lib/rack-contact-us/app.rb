@@ -4,7 +4,6 @@ module ContactUs
       request = Rack::Request.new(env)
       if request.request_method == "POST"
         requested_mailer = request.path.split("/").last
-        puts requested_mailer.inspect
         mailer = ContactUs.mailers.select { |m| m == requested_mailer }.first
         config = ContactUs.mailer_config_at mailer
         director = ContactUs::MailerDirector.new
